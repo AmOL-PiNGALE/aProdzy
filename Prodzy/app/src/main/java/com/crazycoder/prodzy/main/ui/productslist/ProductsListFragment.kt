@@ -1,4 +1,4 @@
-package com.crazycoder.prodzy.ui.productdetails
+package com.crazycoder.prodzy.main.ui.productslist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.crazycoder.prodzy.databinding.FragmentProductDetailsBinding
+import com.crazycoder.prodzy.databinding.FragmentProductsListBinding
 
-class ProductDetailsFragment : Fragment() {
+class ProductsListFragment : Fragment() {
 
-    private var _binding: FragmentProductDetailsBinding? = null
+    private var _binding: FragmentProductsListBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,14 +22,14 @@ class ProductDetailsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val productDetailsViewModel =
-            ViewModelProvider(this).get(ProductDetailsViewModel::class.java)
+        val productsListViewModel =
+            ViewModelProvider(this).get(ProductsListViewModel::class.java)
 
-        _binding = FragmentProductDetailsBinding.inflate(inflater, container, false)
+        _binding = FragmentProductsListBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
-        productDetailsViewModel.text.observe(viewLifecycleOwner) {
+        val textView: TextView = binding.textDashboard
+        productsListViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
         return root

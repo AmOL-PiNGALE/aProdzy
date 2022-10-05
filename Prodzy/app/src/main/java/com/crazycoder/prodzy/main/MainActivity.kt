@@ -1,15 +1,16 @@
-package com.crazycoder.prodzy
+package com.crazycoder.prodzy.main
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.crazycoder.prodzy.R
+import com.crazycoder.prodzy.base.views.BaseActivity
 import com.crazycoder.prodzy.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var binding: ActivityMainBinding
 

@@ -1,4 +1,4 @@
-package com.crazycoder.prodzy.ui.productslist
+package com.crazycoder.prodzy.main.ui.productslist
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

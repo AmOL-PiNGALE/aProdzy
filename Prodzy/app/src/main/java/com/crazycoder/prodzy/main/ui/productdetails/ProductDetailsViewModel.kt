@@ -1,13 +1,13 @@
-package com.crazycoder.prodzy.ui.favorites
+package com.crazycoder.prodzy.main.ui.productdetails
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class FavoritesViewModel : ViewModel() {
+class ProductDetailsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is favorites Fragment"
+        value = "This is home Fragment"
     }
     val text: LiveData<String> = _text
 }
