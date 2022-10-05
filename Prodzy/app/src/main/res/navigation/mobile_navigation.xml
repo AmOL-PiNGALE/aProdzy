@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@id/navigation_products_list">
+
+    <fragment
+        android:id="@+id/navigation_products_list"
+        android:name="com.crazycoder.prodzy.ui.productslist.ProductsListFragment"
+        android:label="@string/title_products_list"
+        tools:layout="@layout/fragment_products_list" />
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.crazycoder.prodzy.ui.favorites.FavoritesFragment"
+        android:label="@string/title_favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>
