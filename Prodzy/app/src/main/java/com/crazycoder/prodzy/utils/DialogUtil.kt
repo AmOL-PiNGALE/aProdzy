@@ -63,8 +63,8 @@ object DialogUtil {
         val positiveListener = DialogInterface.OnClickListener { dialog, _ ->
             run { }
         }
-        var dialogTitle = context.getString(R.string.app_name)
-        var positiveBtnText = context.getString(R.string.action_ok)
+        val dialogTitle = context.getString(R.string.app_name)
+        val positiveBtnText = context.getString(R.string.action_ok)
         return AlertDialog.Builder(context)
             .setTitle(dialogTitle)
             .setMessage(message)

@@ -1,14 +1,12 @@
 package com.crazycoder.prodzy.main
 
 import android.os.Bundle
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.fragment.app.Fragment
 import com.crazycoder.prodzy.R
 import com.crazycoder.prodzy.base.views.BaseActivity
 import com.crazycoder.prodzy.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.crazycoder.prodzy.main.ui.favorites.FavoritesFragment
+import com.crazycoder.prodzy.main.ui.productslist.views.ProductsListFragment
 
 class MainActivity : BaseActivity() {
 
@@ -20,17 +18,31 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        setSupportActionBar(binding.toolbar)
+        this.setProgressBar(binding.loadingProgressBar)
 
-        val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_products_list, R.id.navigation_favorites
-            )
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        setCurrentFragment(ProductsListFragment(), "ProductsListFragment")
+
+        binding.navView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.navigation_products_list -> setCurrentFragment(
+                    ProductsListFragment(),
+                    "ProductsListFragment"
+                )
+                R.id.navigation_favorites -> setCurrentFragment(
+                    FavoritesFragment(),
+                    "FavoritesFragment"
+                )
+            }
+            true
+        }
+    }
+
+    private fun setCurrentFragment(fragment: Fragment, tag: String) {
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.nav_host_fragment, fragment)
+            addToBackStack(null)
+            commit()
+        }
     }
 }
