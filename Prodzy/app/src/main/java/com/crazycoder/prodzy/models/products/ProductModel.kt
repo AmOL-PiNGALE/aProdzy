@@ -21,5 +21,7 @@ data class ProductModel(
     @SerializedName("saleUnitPrice") var saleUnitPrice: Double? = null,
     @SerializedName("totalReviewCount") var totalReviewCount: Int? = null,
     @SerializedName("isDeliveryOnly") var isDeliveryOnly: Boolean? = null,
-    @SerializedName("isDirectFromSupplier") var isDirectFromSupplier: Boolean? = null
+    @SerializedName("isDirectFromSupplier") var isDirectFromSupplier: Boolean? = null,
+
+    @SerializedName("isFavorite") var isFavorite: Boolean = false
 )

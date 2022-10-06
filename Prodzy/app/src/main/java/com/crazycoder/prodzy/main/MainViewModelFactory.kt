@@ -1,15 +1,15 @@
-package com.crazycoder.prodzy.main.ui.productslist.viewmodels
+package com.crazycoder.prodzy.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.crazycoder.prodzy.repositories.ProductRepositoryProvider
 
-class ProductsListViewModelFactory: ViewModelProvider.Factory {
+class MainViewModelFactory: ViewModelProvider.Factory {
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(ProductsListViewModel::class.java)) {
-            return ProductsListViewModel(
+        if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
+            return MainViewModel(
                 ProductRepositoryProvider.provideProductRepository()
             ) as T
         }

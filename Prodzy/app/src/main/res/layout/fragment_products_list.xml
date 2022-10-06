@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:windowBackground"
-    tools:context=".main.ui.productslist.views.ProductsListFragment">
+    tools:context=".main.ui.productslist.ProductsListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_product_list"
@@ -14,8 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:paddingBottom="32dp" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_empty_view"
