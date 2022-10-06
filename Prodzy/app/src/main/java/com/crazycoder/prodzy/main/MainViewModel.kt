@@ -15,7 +15,7 @@ class MainViewModel(private val productRepository: ProductRepository) : BaseView
 
     private val _productsResponse = MutableLiveData<ProductsResponseModel>()
     val productsResponse: LiveData<ProductsResponseModel> = _productsResponse
-    var favoriteList : MutableList<ProductModel>? = null
+    var favoriteList: MutableList<ProductModel>? = null
     var selectedProduct: ProductModel? = null
     var selectedIndex: Int = -1
     var isApiCalled: Boolean = false

@@ -20,10 +20,11 @@ import com.crazycoder.prodzy.models.products.ProductModel
 import com.crazycoder.prodzy.utils.DialogUtil
 import com.google.gson.Gson
 
-class ProductAdapter(private val activity: MainActivity,
-                     private val products: List<ProductModel>,
-                     private val callback: ProductFavoritesCallback?)
-    : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ProductAdapter(
+    private val activity: MainActivity,
+    private val products: List<ProductModel>,
+    private val callback: ProductFavoritesCallback?
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -46,24 +47,27 @@ class ProductAdapter(private val activity: MainActivity,
         private var productName: AppCompatTextView = itemView.findViewById(R.id.txt_product_name)
         private var imgProduct: AppCompatImageView = itemView.findViewById(R.id.img_product)
         private var productPrice: AppCompatTextView = itemView.findViewById(R.id.txt_product_price)
-        private var addButton : AppCompatButton = itemView.findViewById(R.id.btn_add_to_cart)
-        private var imgFavorite : AppCompatImageView = itemView.findViewById(R.id.img_favorite)
+        private var addButton: AppCompatButton = itemView.findViewById(R.id.btn_add_to_cart)
+        private var imgFavorite: AppCompatImageView = itemView.findViewById(R.id.img_favorite)
 
 
         fun bind(item: ProductModel, itemPosition: Int) = with(itemView) {
             productName.text = item.title
-            val price = item.price[0].value;
-            productPrice.text =  price.toString() + " ₹";
+            val price = item.price[0].value
+            productPrice.text = price.toString() + " ₹"
 
             Glide
                 .with(context)
                 .load(item.imageURL)
                 .placeholder(R.drawable.placeholder_image)
                 .centerCrop()
-                .into(imgProduct);
+                .into(imgProduct)
 
             addButton.setOnClickListener { view: View ->
-                DialogUtil.showToast(view.context, view.context.getString(R.string.add_to_cart_click))
+                DialogUtil.showToast(
+                    view.context,
+                    view.context.getString(R.string.add_to_cart_click)
+                )
             }
 
             setFavoriteIcon(item)
@@ -82,7 +86,7 @@ class ProductAdapter(private val activity: MainActivity,
                 DialogUtil.showToast(activity, message)
             }
 
-            itemView.setOnClickListener  { view: View ->
+            itemView.setOnClickListener { view: View ->
                 val productDetailsFragment: Fragment = ProductDetailsFragment()
 
                 val args = Bundle()
@@ -109,7 +113,8 @@ class ProductAdapter(private val activity: MainActivity,
                     AppCompatResources.getDrawable(
                         activity,
                         R.drawable.ic_favorite_unselected
-                    ))
+                    )
+            )
         }
     }
 }

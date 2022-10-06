@@ -39,21 +39,21 @@ class ProductDetailsFragment : Fragment() {
 
     private fun initUi() {
         if (arguments != null && requireArguments().containsKey("itemDetails")) {
-            val productDetails : String? = requireArguments().getString("itemDetails")
-            val selectedProduct =  Gson().fromJson(productDetails ?: "", ProductModel::class.java)
+            val productDetails: String? = requireArguments().getString("itemDetails")
+            val selectedProduct = Gson().fromJson(productDetails ?: "", ProductModel::class.java)
             (activity as MainActivity).viewModel.selectedProduct = selectedProduct
 
             binding.txtProductName.text = selectedProduct.title
-            val price = selectedProduct.price[0].value;
-            binding.txtProductPrice.text =  price.toString() + " ₹";
-            binding.ratingBar.rating = selectedProduct.ratingCount!!.toFloat();
+            val price = selectedProduct.price[0].value
+            binding.txtProductPrice.text = price.toString() + " ₹"
+            binding.ratingBar.rating = selectedProduct.ratingCount!!.toFloat()
 
             Glide
                 .with(activity as MainActivity)
                 .load(selectedProduct.imageURL)
                 .placeholder(R.drawable.placeholder_image)
                 .fitCenter()
-                .into(binding.imgProduct);
+                .into(binding.imgProduct)
 
             setFavoriteIcon()
 
@@ -61,10 +61,13 @@ class ProductDetailsFragment : Fragment() {
                 selectedProduct.isFavorite = !selectedProduct.isFavorite
 
                 setFavoriteIcon()
-                (activity as MainActivity).viewModel.addOrRemoveProductFromFavoriteList(selectedProduct)
+                (activity as MainActivity).viewModel.addOrRemoveProductFromFavoriteList(
+                    selectedProduct
+                )
 
                 (activity as MainActivity).viewModel.productsResponse
-                    .value?.products?.get((activity as MainActivity).viewModel.selectedIndex)?.isFavorite = selectedProduct.isFavorite
+                    .value?.products?.get((activity as MainActivity).viewModel.selectedIndex)?.isFavorite =
+                    selectedProduct.isFavorite
 
                 val message = if (selectedProduct.isFavorite)
                     getString(R.string.product_added_to_favorites) else getString(R.string.product_remove_from_favorites)
@@ -72,7 +75,10 @@ class ProductDetailsFragment : Fragment() {
             }
 
             binding.btnAddToCart.setOnClickListener { view: View ->
-                DialogUtil.showToast(view.context, view.context.getString(R.string.add_to_cart_click))
+                DialogUtil.showToast(
+                    view.context,
+                    view.context.getString(R.string.add_to_cart_click)
+                )
             }
         } else {
             binding.clEmptyView.visibility = View.VISIBLE
@@ -85,7 +91,8 @@ class ProductDetailsFragment : Fragment() {
     private fun setFavoriteIcon() {
         binding.imgFavorite.setImageDrawable(
             if ((activity as MainActivity).viewModel.selectedProduct != null &&
-                (activity as MainActivity).viewModel.selectedProduct!!.isFavorite)
+                (activity as MainActivity).viewModel.selectedProduct!!.isFavorite
+            )
                 AppCompatResources.getDrawable(
                     activity as MainActivity,
                     R.drawable.ic_favorite_black_24
@@ -94,6 +101,7 @@ class ProductDetailsFragment : Fragment() {
                 AppCompatResources.getDrawable(
                     activity as MainActivity,
                     R.drawable.ic_favorite_unselected
-                ))
+                )
+        )
     }
 }

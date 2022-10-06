@@ -60,10 +60,14 @@ class ProductsListFragment : Fragment() {
                     layoutManager = LinearLayoutManager(this.context)
                     binding.rvProductList.layoutManager = layoutManager
 
-                    adapter = ProductAdapter(activity as MainActivity, productsResponse.products!!, null)
+                    adapter =
+                        ProductAdapter(activity as MainActivity, productsResponse.products!!, null)
                     binding.rvProductList.adapter = adapter
                 } else {
-                    DialogUtil.showToast(activity as MainActivity, getString(R.string.no_products_present_message));
+                    DialogUtil.showToast(
+                        activity as MainActivity,
+                        getString(R.string.no_products_present_message)
+                    )
                     binding.clEmptyView.visibility = View.VISIBLE
                     binding.rvProductList.visibility = View.GONE
                 }

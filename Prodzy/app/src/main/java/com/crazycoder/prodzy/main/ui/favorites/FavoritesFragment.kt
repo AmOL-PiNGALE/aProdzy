@@ -55,8 +55,11 @@ class FavoritesFragment : Fragment(), ProductFavoritesCallback {
             binding.rvFavoritesList.adapter = adapter
             binding.rvFavoritesList.visibility = View.VISIBLE
             binding.clEmptyView.visibility = View.GONE
-        } else{
-            DialogUtil.showToast(activity as MainActivity, getString(R.string.no_favorites_products_present_message));
+        } else {
+            DialogUtil.showToast(
+                activity as MainActivity,
+                getString(R.string.no_favorites_products_present_message)
+            )
             setEmptyView()
         }
     }
